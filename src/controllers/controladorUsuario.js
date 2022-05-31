@@ -44,6 +44,7 @@ const borrarUsuarios = async (req,res)=>{
     } catch (error) {
         
     }
+    res.send("Datos borrados correctamente");
 }
 const crearUsuariosDeCsv = async (req,res)=>{
     const {listaUsuarios} = req.files;
