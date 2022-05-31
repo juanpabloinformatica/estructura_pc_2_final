@@ -13,10 +13,12 @@ git clone https://github.com/juanpabloinformatica/finalProjectEstPc.git
 ```
 cd finalProjectEstPc
 ```
+```
 docker-compose build
 ```
 Si quiere utilizar uno de los contenedores,
 recomendable en caso de revisar base de datos.
+
 ```
 docker-compose up -d
 ```
@@ -29,8 +31,8 @@ Con esto construimos e iniciamos la aplicación.
 ## Funcionalidades
 Nos dirijimos a insomnia REST para probar la aplicación.
 La ruta para todos los procedimientos es sacada de acá:
-![]('foto1.png')
-![]('foto2.png')
+![](foto1.png)
+![](foto2.png)
 * Conexión con la base de datos
 Esto ocurre de forma automática al ejecutar la API, nos arroja un "OK" una vez lograda la conexión.
 
