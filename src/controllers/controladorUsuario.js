@@ -50,11 +50,12 @@ const crearUsuariosDeCsv = async (req,res)=>{
     // console.log(listaUsuarios);
     const jsonArray=await csvtojson().fromFile(listaUsuarios.tempFilePath);
     let sw = 0;
-    jsonArray.forEach(async(e) =>{
+    for (e of jsonArray){
         try {
             let usuario =new Usuario({nombreDeUsuario:e.nombreDeUsuario,clave:e.clave,idEvento:e.idEvento});
             const existe = await Usuario.findOne({nombreDeUsuario:e.nombreDeUsuario,clave:e.clave,idEvento:e.idEvento});
             if(existe){
+                throw new Error("error");
             }else{
                 await usuario.save();
             }
@@ -62,14 +63,12 @@ const crearUsuariosDeCsv = async (req,res)=>{
             console.log(`error: ${error}`);
             sw=1;
         }
-
-    })
-    if(sw==1){
-        res.send('Finalizo de agregar correctamente');
-    }else{
-        res.send('No termino de agregar correctamente');
     }
-    
+    if(sw==0){
+        res.send("Se agregaron correctamente.");
+    }else{
+        res.send("Hay usuarios ya existentes\nque no fueron agregados nuevamente.");
+    }
 }
 module.exports = {
     crearUsuario,
