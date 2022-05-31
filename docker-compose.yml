@@ -10,7 +10,7 @@ services:
       links:
         - database
       volumes:
-        - .:/usr/src/app
+        - ./src:/usr/src/app/src
     database:
       container_name: mongodb
       image: mongo
